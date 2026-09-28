@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFD400">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Urban Crust">
+
+<!-- SEO -->
+<title>Urban Crust — Best Fast Food & Pizza in Islamabad | E-16 Alpha Arcade</title>
+<meta name="description" content="Urban Crust — Islamabad's boldest fast food. Crown Crust Pizza, Zinger Burgers, Broasts, Shawarma & Family Deals. Free delivery to D-17, E-16 & E-17. Order now!">
+<meta name="keywords" content="Urban Crust, fast food Islamabad, best burger Islamabad, pizza delivery E-16, Crown Crust Pizza, zinger burger, Alpha Arcade restaurant">
+<meta property="og:title" content="Urban Crust — Best Fast Food in Islamabad">
+<meta property="og:description" content="Crown Crust Pizza, Zinger Burgers, Broasts & Family Deals. Free delivery across D-17 / E-16 / E-17.">
+<meta property="og:type" content="restaurant">
+<meta property="og:image" content="images/poster-burger.png">
+<link rel="icon" type="image/png" href="images/logo.png">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/fx.css">
+<link rel="stylesheet" href="css/home.css">
+
+</head>
+<body>
+
+<div id="preloader"><img src="images/logo.png" class="pre-logo" alt="Urban Crust"><div class="pre-bar"></div><div class="pre-text">Loading the crunch…</div></div>
+
+<div class="bg-glow"><span></span><span></span><span></span></div>
+
+<div class="nav-wrap" id="navWrap">
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="Urban Crust logo">
+        <span class="brand-name">Urban <span>Crust</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active"><i class="fas fa-house"></i> Home</a></li>
+        <li><a href="#about"><i class="fas fa-star"></i> Why Us</a></li>
+        <li><a href="#popular"><i class="fas fa-fire"></i> Favourites</a></li>
+        <li><a href="#vibes"><i class="fas fa-camera-retro"></i> Vibes</a></li>
+        <li><a href="#deals"><i class="fas fa-ticket"></i> Deals</a></li>
+        <li><a href="#zones"><i class="fas fa-motorcycle"></i> Delivery</a></li>
+        <li><a href="sweets.html"><i class="fas fa-mug-hot"></i> Urban Sip</a></li>
+        <li><a href="#contact"><i class="fas fa-phone"></i> Contact</a></li>
+        <li><a href="urban-menu.html" class="nav-cta"><i class="fas fa-utensils"></i> Order Now</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span><i class="fas fa-crown"></i> CROWN CRUST PIZZA</span>
+      <span><i class="fas fa-fire"></i> FREE DELIVERY</span>
+      <span><i class="fas fa-burger"></i> ZINGER SENIOR</span>
+      <span><i class="fas fa-bolt"></i> FAMILY DEAL Rs. 3300</span>
+      <span><i class="fas fa-drumstick-bite"></i> FULL BROAST</span>
+      <span><i class="fas fa-crown"></i> CROWN CRUST PIZZA</span>
+      <span><i class="fas fa-fire"></i> FREE DELIVERY</span>
+      <span><i class="fas fa-burger"></i> ZINGER SENIOR</span>
+      <span><i class="fas fa-bolt"></i> FAMILY DEAL Rs. 3300</span>
+      <span><i class="fas fa-drumstick-bite"></i> FULL BROAST</span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="food-rain" id="rain"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge" id="openBadge"><span class="dot"></span><i class="fas fa-clock"></i> <span class="txt">Open Now · 1:00 PM – 2:00 AM</span></div>
+      <h1 class="hero-title"><span class="crave">Craving</span><span class="type-line"><i class="fas fa-pizza-slice type-ico" id="typedIco"></i><span id="typed"></span><span class="caret"></span></span></h1>
+      <p class="hero-desc">Hot, fresh and loaded — made in Alpha Arcade E-16/3 and delivered <b style="color:var(--primary)">free</b> across Islamabad. Order in under two minutes.</p>
+      <div class="hero-cta-row">
+        <a href="urban-menu.html" class="btn btn-primary shine" data-burst><i class="fas fa-utensils"></i> Order Now</a>
+        <a href="https://wa.me/923369226600?text=Hi%20Urban%20Crust!%20I%27d%20like%20to%20order." target="_blank" class="btn btn-whatsapp shine"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#deals" class="btn btn-ghost"><i class="fas fa-ticket"></i> Deals</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong data-count="60" data-suffix="+">0</strong><span>Menu Items</span></div>
+        <div><strong data-count="5" data-suffix="K+">0</strong><span>Happy Customers</span></div>
+        <div><strong data-count="30" data-suffix=" min">0</strong><span>Avg Delivery</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-plate"><img src="images/crown-pizza.png" alt="Crown Crust Pizza"></div>
+      <img class="orbit-img oi-1" src="images/gallery/zinger-burger.jpg" alt="Zinger Burger">
+      <img class="orbit-img oi-2" src="images/gallery/pizza-roll.jpg" alt="Pizza Roll">
+      <img class="orbit-img oi-3" src="images/gallery/karak-chai.jpg" alt="Karak Chai">
+      <img class="orbit-img oi-4" src="images/gallery/chowmein.jpg" alt="Chowmein">
+      <div class="hero-chip chip-2"><i class="fas fa-motorcycle"></i><div><b>Free Delivery</b><small>D-17 · E-16 · E-17</small></div></div>
+    </div>
+  </div>
+  <div class="scroll-cue"></div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="cats"><div class="container"><div class="cat-row">
+  <a href="urban-menu.html" class="cat reveal-zoom"><span class="em"><i class="fas fa-pizza-slice"></i></span><b>Pizza</b><small>Crown Crust</small></a>
+  <a href="urban-menu.html" class="cat reveal-zoom" data-delay="60"><span class="em"><i class="fas fa-burger"></i></span><b>Burgers</b><small>Zinger &amp; more</small></a>
+  <a href="urban-menu.html" class="cat reveal-zoom" data-delay="120"><span class="em"><i class="fas fa-drumstick-bite"></i></span><b>Broast</b><small>Crispy &amp; hot</small></a>
+  <a href="urban-menu.html" class="cat reveal-zoom" data-delay="180"><span class="em"><i class="fas fa-bowl-rice"></i></span><b>Shawarma</b><small>Rolls &amp; wraps</small></a>
+  <a href="urban-menu.html" class="cat reveal-zoom" data-delay="240"><span class="em"><i class="fas fa-utensils"></i></span><b>Pasta</b><small>Baked &amp; creamy</small></a>
+  <a href="sweets.html" class="cat reveal-zoom" data-delay="300"><span class="em"><i class="fas fa-ice-cream"></i></span><b>Urban Sip</b><small>Shakes &amp; sweets</small></a>
+</div></div></section>
+
+<!-- POPULAR -->
+<section class="pop" id="popular"><div class="container">
+  <div class="section-head reveal">
+    <div class="eyebrow"><i class="fas fa-fire"></i> Fan Favourites</div>
+    <h2 class="section-title">Straight From <span>Our Kitchen</span></h2>
+    <p class="section-sub">Swipe through what Islamabad keeps ordering.</p>
+  </div>
+  <div class="slider" id="slider">
+    <div class="dish tilt"><span class="tag"><i class="fas fa-crown"></i> Signature</span><div class="ph" data-pop="images/crown-pizza.png" data-title="Crown Crust Pizza" data-desc="Cheese-filled crust. Made fresh to order and delivered hot across Islamabad." data-kick="Fan Favourite" data-group="fav"><img src="images/crown-pizza.png" alt="Crown Crust Pizza" loading="lazy"></div><div class="info"><div><h4>Crown Crust Pizza</h4><p>Cheese-filled crust</p></div><a class="go" href="urban-menu.html" aria-label="Order Crown Crust Pizza"><i class="fas fa-arrow-right"></i></a></div></div>
+    <div class="dish tilt"><span class="tag"><i class="fas fa-fire"></i> Best Seller</span><div class="ph" data-pop="images/gallery/zinger-burger.jpg" data-title="Zinger Burger" data-desc="Crispy & juicy. Made fresh to order and delivered hot across Islamabad." data-kick="Fan Favourite" data-group="fav"><img src="images/gallery/zinger-burger.jpg" alt="Zinger Burger" loading="lazy"></div><div class="info"><div><h4>Zinger Burger</h4><p>Crispy & juicy</p></div><a class="go" href="urban-menu.html" aria-label="Order Zinger Burger"><i class="fas fa-arrow-right"></i></a></div></div>
+    <div class="dish tilt"><span class="tag"><i class="fas fa-cheese"></i> Cheesy</span><div class="ph" data-pop="images/gallery/cheezy-pizza.jpg" data-title="Cheezy Pizza" data-desc="Loaded with cheese. Made fresh to order and delivered hot across Islamabad." data-kick="Fan Favourite" data-group="fav"><img src="images/gallery/cheezy-pizza.jpg" alt="Cheezy Pizza" loading="lazy"></div><div class="info"><div><h4>Cheezy Pizza</h4><p>Loaded with cheese</p></div><a class="go" href="urban-menu.html" aria-label="Order Cheezy Pizza"><i class="fas fa-arrow-right"></i></a></div></div>
+    <div class="dish tilt"><span class="tag"><i class="fas fa-seedling"></i> New</span><div class="ph" data-pop="images/gallery/blooming-pizza.jpg" data-title="Blooming Pizza" data-desc="Garlic dip centre. Made fresh to order and delivered hot across Islamabad." data-kick="Fan Favourite" data-group="fav"><img src="images/gallery/blooming-pizza.jpg" alt="Blooming Pizza" loading="lazy"></div><div class="info"><div><h4>Blooming Pizza</h4><p>Garlic dip centre</p></div><a class="go" href="urban-menu.html" aria-label="Order Blooming Pizza"><i class="fas fa-arrow-right"></i></a></div></div>
+    <div class="dish tilt"><div class="ph" data-pop="images/gallery/calzone.jpg" data-title="Calzone" data-desc="Stuffed & golden. Made fresh to order and delivered hot across Islamabad." data-kick="Fan Favourite" data-group="fav"><img src="images/gallery/calzone.jpg" alt="Calzone" loading="lazy"></div><div class="info"><div><h4>Calzone</h4><p>Stuffed & golden</p></div><a class="go" href="urban-menu.html" aria-label="Order Calzone"><i class="fas fa-arrow-right"></i></a></div></div>
+    <div class="dish tilt"><div class="ph" data-pop="images/gallery/pizza-roll.jpg" data-title="Pizza Roll" data-desc="Crispy pizza wrap. Made fresh to order and delivered hot across Islamabad." data-kick="Fan Favourite" data-group="fav"><img src="images/gallery/pizza-roll.jpg" alt="Pizza Roll" loading="lazy"></div><div class="info"><div><h4>Pizza Roll</h4><p>Crispy pizza wrap</p></div><a class="go" href="urban-menu.html" aria-label="Order Pizza Roll"><i class="fas fa-arrow-right"></i></a></div></div>
+    <div class="dish tilt"><span class="tag"><i class="fas fa-bowl-rice"></i> Chinese</span><div class="ph" data-pop="images/gallery/chowmein.jpg" data-title="Chowmein" data-desc="Wok tossed noodles. Made fresh to order and delivered hot across Islamabad." data-kick="Fan Favourite" data-group="fav"><img src="images/gallery/chowmein.jpg" alt="Chowmein" loading="lazy"></div><div class="info"><div><h4>Chowmein</h4><p>Wok tossed noodles</p></div><a class="go" href="urban-menu.html" aria-label="Order Chowmein"><i class="fas fa-arrow-right"></i></a></div></div>
+    <div class="dish tilt"><span class="tag"><i class="fas fa-fire-flame-curved"></i> Chinese</span><div class="ph" data-pop="images/gallery/fried-rice.jpg" data-title="Fried Rice" data-desc="Smoky wok flavour. Made fresh to order and delivered hot across Islamabad." data-kick="Fan Favourite" data-group="fav"><img src="images/gallery/fried-rice.jpg" alt="Fried Rice" loading="lazy"></div><div class="info"><div><h4>Fried Rice</h4><p>Smoky wok flavour</p></div><a class="go" href="urban-menu.html" aria-label="Order Fried Rice"><i class="fas fa-arrow-right"></i></a></div></div>
+    <div class="dish tilt"><span class="tag"><i class="fas fa-utensils"></i> Italian</span><div class="ph" data-pop="images/gallery/pasta-crunchy.jpg" data-title="Pasta Crunchy" data-desc="Zinger mac & cheese. Made fresh to order and delivered hot across Islamabad." data-kick="Fan Favourite" data-group="fav"><img src="images/gallery/pasta-crunchy.jpg" alt="Pasta Crunchy" loading="lazy"></div><div class="info"><div><h4>Pasta Crunchy</h4><p>Zinger mac & cheese</p></div><a class="go" href="urban-menu.html" aria-label="Order Pasta Crunchy"><i class="fas fa-arrow-right"></i></a></div></div>
+    <div class="dish tilt"><div class="ph" data-pop="images/gallery/juicy-bites.jpg" data-title="Juicy Bites" data-desc="Supreme taste. Made fresh to order and delivered hot across Islamabad." data-kick="Fan Favourite" data-group="fav"><img src="images/gallery/juicy-bites.jpg" alt="Juicy Bites" loading="lazy"></div><div class="info"><div><h4>Juicy Bites</h4><p>Supreme taste</p></div><a class="go" href="urban-menu.html" aria-label="Order Juicy Bites"><i class="fas fa-arrow-right"></i></a></div></div>
+  </div>
+  <div class="slide-ctl"><button data-slide="-1" aria-label="Previous"><i class="fas fa-chevron-left"></i></button><button data-slide="1" aria-label="Next"><i class="fas fa-chevron-right"></i></button></div>
+</div></section>
+
+<!-- REELS -->
+<section class="reels" id="vibes"><div class="container"><div class="section-head reveal">
+  <div class="eyebrow"><i class="fas fa-camera-retro"></i> Taste The Vibe</div><h2 class="section-title">Fresh Off <span>Our Feed</span></h2><p class="section-sub">Tap any poster to see it up close.</p></div></div>
+  <div class="reel"><div class="reel-track"><div class="reel-item" data-pop="images/gallery/cheezy-pizza-2.jpg" data-title="Cheezy Pizza" data-desc="Stretchy, loaded and baked fresh." data-group="reel1"><img src="images/gallery/cheezy-pizza-2.jpg" alt="Cheezy Pizza" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/warning-burger.jpg" data-title="Zinger Stack" data-desc="So good you cannot see straight." data-group="reel1"><img src="images/gallery/warning-burger.jpg" alt="Zinger Stack" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/pizza-pasta.jpg" data-title="Pizza Pasta" data-desc="Two favourites on one plate." data-group="reel1"><img src="images/gallery/pizza-pasta.jpg" alt="Pizza Pasta" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/so-good.jpg" data-title="So Good" data-desc="You would fight for it." data-group="reel1"><img src="images/gallery/so-good.jpg" alt="So Good" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/urban-bites.jpg" data-title="Urban Bites" data-desc="Dig into a fresh pepperoni slice." data-group="reel1"><img src="images/gallery/urban-bites.jpg" alt="Urban Bites" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/tasty-noodles.jpg" data-title="Tasty Noodles" data-desc="Twirl, bite, repeat." data-group="reel1"><img src="images/gallery/tasty-noodles.jpg" alt="Tasty Noodles" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/as-delicious.jpg" data-title="Delicious" data-desc="It tastes as good as it looks." data-group="reel1"><img src="images/gallery/as-delicious.jpg" alt="Delicious" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/pasta-big.jpg" data-title="Baked Pasta" data-desc="Golden, cheesy and bubbling." data-group="reel1"><img src="images/gallery/pasta-big.jpg" alt="Baked Pasta" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/tasty-bites.jpg" data-title="Tasty Bites" data-desc="Made for foodies." data-group="reel1"><img src="images/gallery/tasty-bites.jpg" alt="Tasty Bites" loading="lazy"></div></div></div><div class="reel rev"><div class="reel-track"><div class="reel-item" data-pop="images/gallery/free-delivery-cup.jpg" data-title="Free Delivery" data-desc="Hot coffee to your door." data-group="reel2"><img src="images/gallery/free-delivery-cup.jpg" alt="Free Delivery" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/cupcake.jpg" data-title="Cupcake" data-desc="Sprinkles and pure joy." data-group="reel2"><img src="images/gallery/cupcake.jpg" alt="Cupcake" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/donut-coffee.jpg" data-title="Donut and Coffee" data-desc="A perfect morning pair." data-group="reel2"><img src="images/gallery/donut-coffee.jpg" alt="Donut and Coffee" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/hot-coffee.jpg" data-title="Hot Coffee" data-desc="Fresh brewed at Urban Sip." data-group="reel2"><img src="images/gallery/hot-coffee.jpg" alt="Hot Coffee" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/morning-flavor.jpg" data-title="Start Your Morning" data-desc="Latte, Mocha Latte and Flavoured Coffee." data-group="reel2"><img src="images/gallery/morning-flavor.jpg" alt="Start Your Morning" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/which-fancy.jpg" data-title="Which One Do You Fancy" data-desc="Espresso, Cappuccino or Americano?" data-group="reel2"><img src="images/gallery/which-fancy.jpg" alt="Which One Do You Fancy" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/soup.jpg" data-title="Chicken Corn Soup" data-desc="Warm, creamy and comforting." data-group="reel2"><img src="images/gallery/soup.jpg" alt="Chicken Corn Soup" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/americano.jpg" data-title="Americano" data-desc="Bold and smooth." data-group="reel2"><img src="images/gallery/americano.jpg" alt="Americano" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/espresso.jpg" data-title="Espresso" data-desc="Short, strong and stunning." data-group="reel2"><img src="images/gallery/espresso.jpg" alt="Espresso" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/good-morning.jpg" data-title="Good Morning" data-desc="Coffee first, everything else later." data-group="reel2"><img src="images/gallery/good-morning.jpg" alt="Good Morning" loading="lazy"></div></div></div>
+</section>
+
+<!-- WHY US -->
+<section class="features-sec" id="about"><div class="container">
+  <div class="section-head reveal">
+    <div class="eyebrow"><i class="fas fa-hand-sparkles"></i> Why Urban Crust</div>
+    <h2 class="section-title">Made Fresh. <span>Served Bold.</span></h2>
+    <p class="section-sub">Everything that makes people come back for seconds.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card reveal"><div class="feat-icon"><i class="fas fa-crown"></i></div><h3>Crown Crust Pizza</h3><p>Our legendary cheese-filled crust — the pizza people actually crave.</p></div>
+    <div class="feat-card reveal" data-delay="80"><div class="feat-icon"><i class="fas fa-motorcycle"></i></div><h3>Fast Free Delivery</h3><p>Hot food to your door across D-17, E-16 &amp; E-17.</p></div>
+    <div class="feat-card reveal" data-delay="160"><div class="feat-icon"><i class="fas fa-leaf"></i></div><h3>Fresh Ingredients</h3><p>Nothing frozen and forgotten — cooked fresh, same day.</p></div>
+    <div class="feat-card reveal"><div class="feat-icon"><i class="fas fa-tags"></i></div><h3>Real Value Deals</h3><p>Solo, couple, friends and family deals — more food for less.</p></div>
+    <div class="feat-card reveal" data-delay="80"><div class="feat-icon"><i class="fab fa-whatsapp"></i></div><h3>Order on WhatsApp</h3><p>Build your cart, tap checkout, done — it lands in our chat.</p></div>
+    <div class="feat-card reveal" data-delay="160"><div class="feat-icon"><i class="fas fa-mug-hot"></i></div><h3>Urban Sip Café</h3><p>Shakes, karak chai and ice cream from our dessert menu.</p></div>
+  </div>
+</div></section>
+
+<!-- HOW IT WORKS -->
+<section class="steps"><div class="container">
+  <div class="section-head reveal">
+    <div class="eyebrow"><i class="fas fa-bolt"></i> Super Easy</div>
+    <h2 class="section-title">Order In <span>4 Simple Steps</span></h2>
+  </div>
+  <div class="step-row">
+    <div class="step reveal"><div class="n"><i class="fas fa-book-open"></i><em>1</em></div><h4>Browse Menu</h4><p>Pick your favourites or a deal.</p></div>
+    <div class="step reveal" data-delay="100"><div class="n"><i class="fas fa-cart-plus"></i><em>2</em></div><h4>Add to Cart</h4><p>Choose sizes and extras.</p></div>
+    <div class="step reveal" data-delay="200"><div class="n"><i class="fab fa-whatsapp"></i><em>3</em></div><h4>Send on WhatsApp</h4><p>One tap checkout.</p></div>
+    <div class="step reveal" data-delay="300"><div class="n"><i class="fas fa-motorcycle"></i><em>4</em></div><h4>Enjoy Hot Food</h4><p>Delivered to your door.</p></div>
+  </div>
+</div></section>
+
+<!-- CHICKEN PIECES -->
+<section class="chick" id="chicken"><div class="container"><div class="chick-wrap">
+  <div class="chick-img reveal-left"><img src="images/gallery/popular-demand.jpg" alt="Popular demand chicken pieces" loading="lazy" data-pop="images/gallery/popular-demand.jpg" data-title="Popular Demand" data-desc="Chicken piece prices: Chest Rs. 300, Leg Rs. 200, Wing Rs. 150." data-kick="Price Update"></div>
+  <div class="reveal-right">
+    <div class="eyebrow"><i class="fas fa-fire"></i> Popular Demand</div><h2 class="section-title" style="text-align:left">Crispy Chicken <span>Pieces</span></h2>
+    <p class="section-sub" style="text-align:left;margin-bottom:1.4rem">Golden, crunchy and juicy — pick your piece.</p>
+    <div class="piece-row">
+      <div class="piece"><i class="fas fa-drumstick-bite"></i><b>Chest Piece</b><strong>Rs. <span data-count="300">0</span></strong></div>
+      <div class="piece"><i class="fas fa-drumstick-bite"></i><b>Leg Piece</b><strong>Rs. <span data-count="200">0</span></strong></div>
+      <div class="piece"><i class="fas fa-feather-pointed"></i><b>Wing Piece</b><strong>Rs. <span data-count="150">0</span></strong></div>
+    </div>
+    <a class="btn btn-primary shine" href="urban-menu.html" data-burst><i class="fas fa-cart-plus"></i> Add To Cart</a>
+  </div>
+</div></div></section>
+
+<!-- DEALS -->
+<section class="deals-sec" id="deals"><div class="container">
+  <div class="section-head reveal">
+    <div class="eyebrow"><i class="fas fa-ticket"></i> Value Deals</div>
+    <h2 class="section-title">Deals Worth <span>Screenshotting</span></h2>
+    <p class="section-sub">A taste of our deal menu — see everything when you order.</p>
+  </div>
+  <div class="deals-grid">
+    <div class="deal-card reveal"><span class="deal-ico"><i class="fas fa-pizza-slice"></i></span><span class="deal-badge">1 PERSON</span><div class="deal-name">1 Person Deal</div><div class="deal-price">Rs. 850</div><div class="deal-desc">Small Pizza + Fries + Drink 345ml</div></div>
+    <div class="deal-card reveal" data-delay="80"><span class="deal-ico"><i class="fas fa-burger"></i></span><span class="deal-badge">COUPLE</span><div class="deal-name">Couple Deal</div><div class="deal-price">Rs. 1,200</div><div class="deal-desc">2x Zinger Burger + 2x Fries + 2x Drink</div></div>
+    <div class="deal-card hot reveal" data-delay="160"><span class="deal-ico"><i class="fas fa-drumstick-bite"></i></span><span class="deal-badge">MOST LOVED</span><div class="deal-name">Friends Deal</div><div class="deal-price">Rs. 2,800</div><div class="deal-desc">4x Zinger + 4x Chicken Piece + Drink 1L</div></div>
+    <div class="deal-card reveal" data-delay="240"><span class="deal-ico"><i class="fas fa-people-roof"></i></span><span class="deal-badge">FAMILY</span><div class="deal-name">Family Deal</div><div class="deal-price">Rs. 3,300</div><div class="deal-desc">2x Large Pizza + 8pc Broast + Drink 1.5L</div></div>
+  </div>
+  <div style="text-align:center;margin-top:2.4rem"><a href="urban-menu.html" class="btn btn-primary shine" data-burst><i class="fas fa-fire"></i> See All Deals</a></div>
+</div></section>
+
+<!-- OPEN LATE -->
+<section class="late" id="timings"><div class="container"><div class="late-wrap">
+  <div class="late-txt reveal-left">
+    <div class="eyebrow"><i class="fas fa-clock"></i> New Urban Timings</div>
+    <h2 class="section-title">Open <span>Late.</span> Every Day.</h2>
+    <p class="section-sub" style="text-align:left">Midnight cravings? We are cooking from <b style="color:var(--primary)">1 PM to 2 AM</b>.</p>
+    <div class="dn-switch" id="dnSwitch" role="switch" aria-checked="false" tabindex="0"><span class="dn-knob"><i class="fas fa-sun"></i></span><span class="dn-lbl day">Day</span><span class="dn-lbl night">Night</span></div>
+    <p class="dn-note" id="dnNote"><i class="fas fa-sun"></i> Lunch rush from 1 PM — burgers, pizzas and broasts.</p>
+    <a class="btn btn-primary shine" href="urban-menu.html" data-burst><i class="fas fa-utensils"></i> Order Now</a>
+  </div>
+  <div class="late-vis reveal-right">
+    <img class="dn-img day" src="images/gallery/day-toggle.jpg" alt="Day" loading="lazy" data-pop="images/gallery/timings.jpg" data-title="New Urban Timings" data-desc="We are now open from 1 PM to 2 AM, every day." data-kick="Notice" data-group="time">
+    <img class="dn-img night" src="images/gallery/night-toggle.jpg" alt="Night" loading="lazy" data-pop="images/gallery/delivery-night.jpg" data-title="Delicious After Dark" data-desc="Late-night delivery until 2 AM." data-kick="Late Night" data-group="time">
+    <div class="spin-badge late-badge"><svg viewBox="0 0 120 120"><defs><path id="cp" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#cp">1 PM to 2 AM • Open Late • </textPath></text></svg><i class="fas fa-moon"></i></div>
+  </div>
+</div></div></section>
+
+<!-- URBAN SIP -->
+<section class="sip"><div class="container"><div class="sip-wrap">
+  <div class="sip-imgs reveal-left">
+    <img src="images/gallery/morning-flavor.jpg" alt="Coffee menu" loading="lazy" data-pop="images/gallery/morning-flavor.jpg" data-title="Start Your Morning" data-desc="Latte, Mocha Latte and Flavoured Coffee." data-kick="Urban Sip" data-href="sweets.html" data-wa="923102306333">
+    <img src="images/gallery/cupcake.jpg" alt="Cupcake" loading="lazy" data-pop="images/gallery/cupcake.jpg" data-title="Cupcake" data-desc="Sprinkles, chocolate and pure joy." data-kick="Urban Sip" data-href="sweets.html" data-wa="923102306333">
+    <img src="images/gallery/karak-chai.jpg" alt="Karak Chai" loading="lazy" data-pop="images/gallery/karak-chai.jpg" data-title="Karak Chai" data-desc="Kulhad chai, brewed strong." data-kick="Urban Sip" data-href="sweets.html" data-wa="923102306333">
+  </div>
+  <div class="sip-txt reveal-right">
+    <div class="eyebrow"><i class="fas fa-mug-hot"></i> Urban Sip</div>
+    <h2 class="section-title">Something <span>Sweet?</span></h2>
+    <p class="section-sub">Oreo shakes, karak chai, ice cream and cakes — the perfect finish to any meal.</p>
+    <a href="sweets.html" class="btn btn-primary shine"><i class="fas fa-ice-cream"></i> Explore Urban Sip</a>
+  </div>
+</div></div></section>
+
+<!-- DELIVERY -->
+<section class="zone-sec" id="zones"><div class="container"><div class="zone-wrap">
+  <img src="images/billboard-delivery.png" alt="Urban Crust free delivery" class="reveal-left" loading="lazy">
+  <div class="reveal-right">
+    <div class="eyebrow"><i class="fas fa-motorcycle"></i> Free Delivery</div>
+    <h2 class="section-title" style="text-align:left">We Come To <span>Your Door</span></h2>
+    <p class="section-sub" style="text-align:left">No delivery charges across our home turf.</p>
+    <div class="zone-list">
+      <span class="zone-pill"><i class="fas fa-location-dot"></i> D-17</span><span class="zone-pill"><i class="fas fa-location-dot"></i> E-16</span>
+      <span class="zone-pill"><i class="fas fa-location-dot"></i> E-17</span><span class="zone-pill"><i class="fas fa-location-dot"></i> Roshan Pakistan</span>
+    </div>
+    <div class="mini-feats"><span><i class="fas fa-check-circle"></i>Hot &amp; fresh</span><span><i class="fas fa-check-circle"></i>Free in our zones</span><span><i class="fas fa-check-circle"></i>Open till 2 AM</span><span><i class="fas fa-check-circle"></i>WhatsApp tracking</span></div>
+    <a href="https://wa.me/923369226600" target="_blank" class="btn btn-whatsapp shine"><i class="fab fa-whatsapp"></i> Check My Area</a>
+  </div>
+</div></div></section>
+
+<!-- FOODIE BANNER -->
+<section class="foodie"><div class="container"><div class="foodie-wrap">
+  <div class="foodie-txt reveal-left"><div class="eyebrow"><i class="fas fa-face-grin-tongue"></i> Made For Foodies</div><h2 class="section-title" style="text-align:left">Life Is Short. <span>Eat The Crust.</span></h2>
+  <p class="section-sub" style="text-align:left;margin-bottom:1.6rem">Stretchy cheese, crispy zingers and sizzling wok favourites — ready when you are.</p>
+  <div class="hero-cta-row"><a class="btn btn-primary shine" href="urban-menu.html" data-burst><i class="fas fa-utensils"></i> Explore Menu</a><a class="btn btn-whatsapp shine" target="_blank" href="https://wa.me/923369226600"><i class="fab fa-whatsapp"></i> WhatsApp</a></div></div>
+  <div class="foodie-img reveal-right"><img src="images/gallery/tasty-bites.jpg" alt="Enjoying Urban Crust pizza" loading="lazy" data-pop="images/gallery/tasty-bites.jpg" data-title="Tasty Bites" data-desc="Happy customers, hot pizza." data-kick="Foodies"><span class="fchip c1"><i class="fas fa-pizza-slice"></i></span><span class="fchip c2"><i class="fas fa-burger"></i></span><span class="fchip c3"><i class="fas fa-star"></i></span></div>
+</div></div></section>
+
+<!-- STATS -->
+<section class="stats-sec"><div class="container stats-grid">
+  <div class="reveal"><div class="stat-num" data-count="5" data-suffix="K+">0</div><div class="stat-lbl">Happy Customers</div></div>
+  <div class="reveal" data-delay="80"><div class="stat-num" data-count="60" data-suffix="+">0</div><div class="stat-lbl">Menu Items</div></div>
+  <div class="reveal" data-delay="160"><div class="stat-num" data-count="20" data-suffix="+">0</div><div class="stat-lbl">Combo Deals</div></div>
+  <div class="reveal" data-delay="240"><div class="stat-num" data-count="100" data-suffix="%">0</div><div class="stat-lbl">Fresh Quality</div></div>
+</div></section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-sec"><div class="container">
+  <div class="section-head reveal"><div class="eyebrow"><i class="fas fa-comment-dots"></i> Customer Love</div><h2 class="section-title">What Islamabad <span>Is Saying</span></h2></div>
+  <div class="testi-grid">
+    <div class="testi-card reveal"><i class="fas fa-quote-left"></i><div class="testi-stars">★★★★★</div><p>"The Crown Crust pizza is unreal — cheese pull for days. Delivery to E-16 took under 30 minutes."</p><div class="testi-person"><div class="testi-avatar">A</div><div><b>Ayesha K.</b><span>E-16, Islamabad</span></div></div></div>
+    <div class="testi-card reveal" data-delay="80"><i class="fas fa-quote-left"></i><div class="testi-stars">★★★★★</div><p>"Family Deal is the best value in the sector, hands down. Broast is always crispy and hot."</p><div class="testi-person"><div class="testi-avatar">H</div><div><b>Hamza R.</b><span>D-17, Islamabad</span></div></div></div>
+    <div class="testi-card reveal" data-delay="160"><i class="fas fa-quote-left"></i><div class="testi-stars">★★★★★</div><p>"Ordered on WhatsApp and it took two minutes. The Oreo milkshake from Urban Sip is elite."</p><div class="testi-person"><div class="testi-avatar">S</div><div><b>Sana M.</b><span>E-17, Islamabad</span></div></div></div>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section class="faq" id="faq"><div class="container">
+  <div class="section-head reveal"><div class="eyebrow"><i class="fas fa-circle-question"></i> Good To Know</div><h2 class="section-title">Quick <span>Answers</span></h2></div>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-q">Is delivery really free? <i class="fas fa-plus"></i></button><div class="faq-a"><p>Yes — delivery is free across D-17, E-16, E-17 and Roshan Pakistan.</p></div></div>
+    <div class="faq-item"><button class="faq-q">How do I place an order? <i class="fas fa-plus"></i></button><div class="faq-a"><p>Open the menu, add items to your cart and tap checkout — your order is sent to us on WhatsApp. You can also call 0336 9226600.</p></div></div>
+    <div class="faq-item"><button class="faq-q">What are your opening hours? <i class="fas fa-plus"></i></button><div class="faq-a"><p>We are open every day, 1:00 PM to 2:00 AM (new timings).</p></div></div>
+    <div class="faq-item"><button class="faq-q">Where are you located? <i class="fas fa-plus"></i></button><div class="faq-a"><p>Alpha Arcade, E-16/3, Islamabad.</p></div></div>
+  </div>
+</div></section>
+
+<!-- CONTACT -->
+<section class="loc-sec" id="contact"><div class="container">
+  <div class="section-head reveal"><div class="eyebrow"><i class="fas fa-location-dot"></i> Visit / Contact</div><h2 class="section-title">Find <span>Urban Crust</span></h2></div>
+  <div class="loc-grid">
+    <div class="loc-card reveal"><div class="loc-icon"><i class="fas fa-map-marker-alt"></i></div><h3>Our Location</h3><p>Alpha Arcade, E-16/3<br>Near Masjid Ibrahim, Islamabad</p><a class="btn btn-primary" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Alpha+Arcade+E-16+Islamabad"><i class="fas fa-diamond-turn-right"></i> Get Directions</a></div>
+    <div class="loc-card reveal" data-delay="120"><div class="loc-icon"><i class="fas fa-phone-alt"></i></div><h3>Call / WhatsApp</h3><p><a href="tel:+923369226600">0336 9226600</a><br><a href="tel:+923419779177">0341 9779177</a></p><a class="btn btn-whatsapp" style="color:#fff" target="_blank" href="https://wa.me/923369226600"><i class="fab fa-whatsapp"></i> Chat Now</a></div>
+    <div class="loc-card reveal" data-delay="240"><div class="loc-icon"><i class="fas fa-clock"></i></div><h3>Opening Hours</h3><p>Monday – Sunday<br>1:00 PM – 2:00 AM</p></div>
+  </div>
+</div></section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand"><img src="images/logo.png" alt="Urban Crust"><span>Urban Crust</span></div>
+        <p>Islamabad's boldest fast food — burgers, Crown Crust pizzas, broasts & shawarma made fresh, delivered fast.</p>
+        <div class="social-row">
+          <a href="https://www.facebook.com/people/Urban-Crust/61566038663961/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/923369226600" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Why Us</a></li>
+          <li><a href="urban-menu.html">Full Menu</a></li>
+          <li><a href="#deals">Deals</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Specialties</h4>
+        <ul>
+          <li>Crown Crust Pizza</li>
+          <li>Zinger Burgers</li>
+          <li>Family Broasts</li>
+          <li>Shawarma & Rolls</li>
+          <li>Urban Sip Desserts</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Alpha Arcade, E-16/3, Islamabad</p>
+        <p style="margin-top:.6rem;"><i class="fas fa-phone"></i> <a href="tel:+923369226600" style="color:var(--muted);">0336 9226600</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 <strong>Urban Crust</strong> · Best Fast Food in Islamabad</p>
+    </div>
+  </div>
+</footer>
+
+<div class="fab-stack">
+  <a class="fab fab-whatsapp" href="https://wa.me/923369226600?text=Hi%20Urban%20Crust!" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <button class="fab fab-top" id="fabTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+</div>
+
+<div class="order-bar"><a href="urban-menu.html" class="btn btn-primary"><i class="fas fa-utensils"></i> Order Now</a><a href="tel:+923369226600" class="btn btn-ghost"><i class="fas fa-phone"></i> Call</a></div>
+<script src="js/brand.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/home.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{}));
+  }
+</script>
+</body>
+</html>

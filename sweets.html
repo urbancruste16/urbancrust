@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Sip — Premium Bakery & Café Menu | Urban Crust</title>
+<meta name="description" content="Order cakes, pastries, ice cream & beverages from Urban Sip — the dessert & café menu by Urban Crust, Islamabad.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ URBAN SIP — green/orange café theme (self-contained) ============ */
+  :root{
+    --pink:#FF8A1F; --pink-2:#FFB86B; --gold:#FFD400; --cream:#FFF6FB;
+    --plum:#0f2a12; --panel:#173d1a; --panel-2:#12300f; --white:#fff; --muted:#d5ecc8;
+    --success:#25D366; --danger:#ff4d6d; --line:rgba(170,225,110,.22);
+    --ff-display:'Baloo 2','Poppins',sans-serif; --ff-body:'Poppins',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{overflow-x:hidden;max-width:100%;}
+  body{
+    font-family:var(--ff-body);color:var(--white);line-height:1.65;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(255,138,31,.16), transparent 45%),
+      radial-gradient(circle at 88% 30%, rgba(255,212,0,.10), transparent 45%),
+      linear-gradient(165deg,#0c2210,#08170a 60%,#061008);
+    min-height:100vh;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  ::selection{background:var(--pink);color:#fff;}
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:#08170a;}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--pink),var(--gold));border-radius:10px;}
+
+  .container{max-width:1320px;margin:0 auto;padding:0 1.6rem;}
+
+  #preloader{position:fixed;inset:0;z-index:99999;background:#08170a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.1rem;transition:opacity .6s,visibility .6s;}
+  #preloader.hide{opacity:0;visibility:hidden;pointer-events:none;}
+  .pre-logo{width:88px;animation:preSpin 1.3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(255,138,31,.6));border-radius:16px;}
+  @keyframes preSpin{0%,100%{transform:scale(1) rotate(0);}50%{transform:scale(1.1) rotate(-6deg);}}
+  .pre-text{font-family:var(--ff-display);color:var(--muted);letter-spacing:.18em;font-size:.72rem;text-transform:uppercase;}
+
+  /* nav */
+  .nav-wrap{position:fixed;top:0;left:0;width:100%;z-index:1000;}
+  header.site-header{background:rgba(8,23,10,.6);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);transition:.4s;}
+  .nav-wrap.scrolled header.site-header{background:rgba(8,23,10,.92);box-shadow:0 8px 26px rgba(0,0,0,.4);}
+  nav.navbar{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.7rem 1.6rem;}
+  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;}
+  .brand img{width:44px;height:44px;border-radius:12px;object-fit:cover;}
+  .brand-name{font-family:var(--ff-display);font-weight:800;font-size:1.3rem;}
+  .brand-name span{color:var(--pink);}
+  .nav-links{display:flex;align-items:center;gap:.2rem;list-style:none;}
+  .nav-links a{display:flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:600;font-size:.93rem;color:#e6f5dc;padding:.68rem .95rem;border-radius:40px;transition:.3s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--pink);background:rgba(255,138,31,.1);}
+  .cart-pill{position:relative;background:linear-gradient(120deg,var(--pink),#F26B00);color:#fff !important;font-weight:700 !important;padding:.7rem 1.2rem !important;box-shadow:0 8px 22px rgba(242,107,0,.4);}
+  .cart-badge{position:absolute;top:-6px;right:-6px;background:var(--gold);color:#0f2a12;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;border:2px solid #08170a;}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem;z-index:1200;}
+  .burger span{width:26px;height:3px;border-radius:3px;background:#fff;transition:.35s;}
+  .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+  @media(max-width:980px){
+    .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:min(320px,84vw);background:linear-gradient(160deg,#0f2a12,#08170a);
+      flex-direction:column;justify-content:center;gap:.4rem;padding:6rem 1.6rem 2rem;transition:right .45s;box-shadow:-20px 0 60px rgba(0,0,0,.5);border-left:1px solid var(--line);}
+    .nav-links.open{right:0;}
+    .nav-links a{font-size:1.05rem;padding:.9rem 1rem;}
+    .burger{display:flex;}
+  }
+
+  /* hero */
+  .sip-hero{padding:9.5rem 1.6rem 2.5rem;text-align:center;position:relative;overflow:hidden;}
+  .sip-hero::before{content:'\f1fd';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;font-size:14rem;opacity:.04;top:-40px;left:-40px;transform:rotate(-15deg);}
+  .sip-hero::after{content:'\f810';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;font-size:14rem;opacity:.04;bottom:-60px;right:-40px;transform:rotate(15deg);}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--ff-display);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem;color:var(--pink);background:rgba(255,138,31,.1);border:1px solid var(--line);padding:.5rem 1.1rem;border-radius:50px;margin-bottom:1.1rem;}
+  .sip-hero h1{font-family:var(--ff-display);font-weight:800;font-size:clamp(2.4rem,5.5vw,3.7rem);margin-bottom:.6rem;position:relative;z-index:1;}
+  .sip-hero h1 span{background:linear-gradient(100deg,var(--pink),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sip-hero p{color:var(--muted);font-size:1.05rem;max-width:640px;margin:0 auto;position:relative;z-index:1;}
+  .sip-hero-strip{display:flex;justify-content:center;gap:.9rem;flex-wrap:wrap;margin-top:1.6rem;position:relative;z-index:1;}
+  .sip-hero-strip .pill{background:rgba(255,138,31,.1);border:1px solid var(--line);color:var(--pink-2);padding:.5rem 1.1rem;border-radius:50px;font-size:.85rem;font-weight:700;}
+
+  /* featured strip */
+  .featured{padding:1rem 0 3.5rem;}
+  .featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+  .featured-card{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 16px 36px rgba(0,0,0,.4);}
+  .featured-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+  .featured-card:hover img{transform:scale(1.07);}
+  .featured-tag{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.5);color:var(--gold);font-family:var(--ff-display);font-size:.75rem;padding:.35rem .75rem;border-radius:50px;border:1px solid var(--line);}
+  .featured-cta{position:absolute;inset:0;display:flex;align-items:flex-end;padding:1.2rem;background:linear-gradient(to top,rgba(0,0,0,.85),transparent 55%);}
+  .featured-cta a{color:#fff;font-weight:700;font-size:.88rem;text-decoration:none;background:linear-gradient(120deg,var(--pink),#F26B00);padding:.55rem 1.1rem;border-radius:50px;display:inline-flex;align-items:center;gap:.4rem;}
+  @media(max-width:900px){.featured-grid{grid-template-columns:1fr;}}
+
+  /* search + tabs */
+  .menu-container{max-width:1320px;margin:0 auto;padding:0 1.4rem 5rem;}
+  .search-container{position:relative;max-width:460px;margin:0 auto 1.8rem;}
+  .search-box{
+    width:100%;padding:1rem 1.3rem 1rem 3rem;border-radius:50px;border:1px solid var(--line);
+    background:rgba(255,255,255,.05);color:#fff;font-size:.98rem;outline:none;transition:.3s;
+  }
+  .search-box:focus{border-color:var(--pink);background:rgba(255,138,31,.08);}
+  .search-box::placeholder{color:#caa1ba;}
+  .search-icon{position:absolute;left:1.2rem;top:50%;transform:translateY(-50%);color:var(--pink);}
+
+  .category-tabs{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.4rem;}
+  .tab-btn{background:rgba(255,255,255,.04);color:#fff;border:2px solid var(--line);padding:.72rem 1.3rem;border-radius:50px;cursor:pointer;font-weight:700;font-family:var(--ff-display);transition:.3s;font-size:.9rem;}
+  .tab-btn:hover{border-color:var(--pink);}
+  .tab-btn.active{background:linear-gradient(120deg,var(--pink),#F26B00);border-color:transparent;box-shadow:0 8px 22px rgba(242,107,0,.4);}
+
+  .menu-section{margin-bottom:2.6rem;}
+  .menu-section h2{font-family:var(--ff-display);color:var(--gold);font-size:1.85rem;margin-bottom:1.5rem;text-align:center;}
+  .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.3rem;}
+  .menu-item{
+    background:linear-gradient(165deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:22px;
+    overflow:hidden;transition:all .35s;position:relative;
+  }
+  .menu-item:hover{transform:translateY(-8px);border-color:var(--pink);box-shadow:0 18px 40px rgba(242,107,0,.28);}
+  .item-image{width:100%;height:170px;object-fit:cover;}
+  .menu-item .item-body{padding:1.3rem;}
+  .item-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;gap:.6rem;}
+  .item-name{font-weight:700;font-size:1.08rem;font-family:var(--ff-display);flex:1;}
+  .item-price{color:var(--gold);font-weight:800;font-family:var(--ff-display);white-space:nowrap;}
+  .item-desc{color:var(--muted);font-size:.88rem;margin-bottom:.8rem;}
+  .item-sizes{color:var(--pink-2);font-size:.82rem;margin-bottom:.9rem;font-weight:600;}
+  .special-badge{position:absolute;top:12px;right:12px;background:var(--danger);color:#fff;padding:.32rem .75rem;border-radius:20px;font-size:.68rem;font-weight:800;z-index:2;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+  .add-to-cart-btn{
+    background:linear-gradient(120deg,var(--pink),#F26B00);color:#fff;border:none;padding:.85rem 1.2rem;
+    border-radius:50px;font-weight:800;font-family:var(--ff-display);cursor:pointer;width:calc(100% - 2.6rem);
+    margin:0 1.3rem 1.3rem;transition:.3s;display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.92rem;
+  }
+  .add-to-cart-btn:hover{transform:scale(1.03);box-shadow:0 10px 24px rgba(242,107,0,.4);}
+  .no-results{text-align:center;padding:4rem 1rem;color:var(--muted);}
+  .no-results i{font-size:3rem;margin-bottom:1rem;opacity:.5;}
+
+  /* floating cart */
+  .cart-floating-btn{
+    position:fixed;bottom:24px;right:24px;background:linear-gradient(135deg,var(--pink),#F26B00);color:#fff;
+    border:none;width:64px;height:64px;border-radius:50%;font-size:1.5rem;cursor:pointer;
+    box-shadow:0 12px 30px rgba(242,107,0,.5);z-index:995;transition:.3s;display:flex;align-items:center;justify-content:center;
+  }
+  .cart-floating-btn:hover{transform:scale(1.08);}
+
+  /* cart sidebar */
+  .cart-sidebar{position:fixed;right:-450px;top:0;width:430px;max-width:100vw;height:100vh;background:linear-gradient(165deg,#0f2a12,#08170a);border-left:1px solid var(--line);z-index:1400;transition:right .45s cubic-bezier(.2,.9,.2,1.05);overflow-y:auto;box-shadow:-10px 0 40px rgba(0,0,0,.6);}
+  .cart-sidebar.show{right:0;}
+  .cart-header{background:linear-gradient(120deg,var(--pink),#F26B00);padding:1.5rem;position:sticky;top:0;z-index:1;}
+  .cart-header h2{color:#fff;font-family:var(--ff-display);font-size:1.35rem;display:flex;align-items:center;justify-content:space-between;}
+  .close-cart{background:rgba(0,0,0,.35);color:#fff;border:none;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.3rem;transition:.3s;}
+  .close-cart:hover{transform:rotate(90deg);}
+  .cart-items{padding:1.4rem;min-height:200px;}
+  .cart-item{background:rgba(255,138,31,.06);border:1px solid var(--line);border-radius:16px;padding:1.1rem;margin-bottom:.9rem;}
+  .cart-item-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.7rem;gap:.6rem;}
+  .cart-item-name{font-weight:700;font-size:1rem;}
+  .cart-item-size{color:var(--pink-2);font-size:.8rem;margin-top:.2rem;}
+  .cart-item-price{color:var(--gold);font-weight:800;font-family:var(--ff-display);white-space:nowrap;}
+  .cart-item-controls{display:flex;align-items:center;justify-content:space-between;margin-top:.6rem;}
+  .quantity-controls{display:flex;align-items:center;gap:.8rem;background:rgba(0,0,0,.3);border-radius:25px;padding:.35rem .9rem;}
+  .qty-btn{background:var(--pink);color:#fff;border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-weight:800;transition:.2s;display:flex;align-items:center;justify-content:center;}
+  .qty-btn:hover{transform:scale(1.15);}
+  .qty-display{font-weight:700;min-width:22px;text-align:center;}
+  .remove-item{background:var(--danger);color:#fff;border:none;padding:.4rem .85rem;border-radius:20px;cursor:pointer;font-weight:700;font-size:.78rem;transition:.3s;}
+  .remove-item:hover{background:#e0304f;}
+  .cart-empty{text-align:center;padding:3.4rem 1rem;color:var(--muted);}
+  .cart-empty i{font-size:3.6rem;margin-bottom:1rem;opacity:.4;}
+  .cart-summary{background:rgba(255,138,31,.08);border-top:1px solid var(--line);padding:1.4rem;position:sticky;bottom:0;}
+  .summary-row{display:flex;justify-content:space-between;margin-bottom:.8rem;font-size:1rem;}
+  .summary-total{border-top:1px solid var(--line);padding-top:.9rem;margin-top:.4rem;font-weight:800;font-size:1.3rem;color:var(--gold);font-family:var(--ff-display);}
+  .checkout-btn{background:linear-gradient(120deg,#22d160,#128c4a);color:#fff;border:none;padding:1.1rem;border-radius:50px;font-size:1.02rem;font-weight:800;font-family:var(--ff-display);cursor:pointer;width:100%;transition:.3s;display:flex;align-items:center;justify-content:center;gap:.7rem;margin-top:1rem;}
+  .checkout-btn:hover{transform:scale(1.03);box-shadow:0 12px 28px rgba(37,211,102,.45);}
+  .clear-cart-btn{background:transparent;color:var(--danger);border:1px solid var(--danger);padding:.75rem;border-radius:20px;font-weight:700;cursor:pointer;width:100%;margin-top:.6rem;transition:.3s;}
+  .clear-cart-btn:hover{background:var(--danger);color:#fff;}
+
+  /* size modal */
+  .size-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);z-index:1500;align-items:center;justify-content:center;}
+  .size-modal.show{display:flex;}
+  .size-modal-content{background:linear-gradient(165deg,#0f2a12,#08170a);border-radius:28px;padding:2rem;max-width:460px;width:90%;border:1px solid var(--line);position:relative;}
+  .size-modal h3{color:var(--gold);font-family:var(--ff-display);font-size:1.4rem;margin-bottom:1.3rem;text-align:center;}
+  .size-options{display:grid;gap:.9rem;margin-bottom:1.4rem;}
+  .size-option{background:rgba(0,0,0,.3);color:#fff;border:2px solid var(--line);padding:1.05rem;border-radius:16px;cursor:pointer;transition:.3s;display:flex;justify-content:space-between;align-items:center;}
+  .size-option:hover{border-color:var(--pink);}
+  .size-option.selected{background:linear-gradient(120deg,var(--pink),#F26B00);border-color:transparent;}
+  .size-option-name{font-weight:700;}
+  .size-option-price{color:var(--gold);font-weight:800;}
+  .size-option.selected .size-option-price{color:#fff;}
+  .confirm-size-btn{background:linear-gradient(120deg,var(--pink),#F26B00);color:#fff;border:none;padding:1rem;border-radius:50px;font-weight:800;font-family:var(--ff-display);cursor:pointer;width:100%;transition:.3s;}
+  .confirm-size-btn:disabled{opacity:.4;cursor:not-allowed;}
+
+  /* footer */
+  footer.site-footer{background:#061008;border-top:1px solid var(--line);padding:4rem 0 1.6rem;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.4rem;margin-bottom:2.6rem;}
+  .footer-brand{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;}
+  .footer-brand img{width:42px;height:42px;border-radius:10px;}
+  .footer-brand span{font-family:var(--ff-display);font-weight:800;font-size:1.2rem;}
+  .footer-col h4{font-family:var(--ff-display);color:var(--pink);margin-bottom:1rem;font-size:1.05rem;}
+  .footer-col p,.footer-col li{color:var(--muted);font-size:.94rem;}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+  .footer-col ul a{color:var(--muted);text-decoration:none;transition:.25s;}
+  .footer-col ul a:hover{color:var(--pink);}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:1.4rem;text-align:center;color:var(--muted);font-size:.88rem;}
+  .footer-bottom strong{color:var(--pink);}
+  @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.footer-grid{grid-template-columns:1fr;}}
+
+  @media(max-width:768px){
+    .menu-grid{grid-template-columns:1fr;}
+    .cart-sidebar{width:100%;right:-100%;}
+  }
+</style>
+<link rel="stylesheet" href="css/fx.css">
+<link rel="stylesheet" href="css/sip.css">
+</head>
+<body>
+
+<div id="preloader"><img src="images/logo.png" class="pre-logo" alt="Urban Sip"><div class="pre-text">Whisking something sweet…</div></div>
+
+<div class="nav-wrap" id="navWrap">
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="Urban Crust logo">
+        <span class="brand-name">Urban <span>Sip</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html"><i class="fas fa-house"></i> Urban Crust Home</a></li>
+        <li><a href="urban-menu.html"><i class="fas fa-utensils"></i> Food Menu</a></li>
+        <li><a href="index.html#contact"><i class="fas fa-phone"></i> Contact</a></li>
+        <li><a href="#" class="cart-pill active" onclick="toggleCart()">
+          <i class="fas fa-shopping-bag"></i> Cart
+          <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+        </a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+</div>
+
+<!-- HERO -->
+<section class="sip-hero2">
+  <div class="steam-rain" id="steamRain"></div>
+  <div class="sip-hero-grid container">
+    <div class="sh-txt">
+      <div class="eyebrow"><i class="fas fa-mug-hot"></i> By Urban Crust</div>
+      <h1>Sip Something<span class="sh-type"><i class="fas fa-mug-hot" id="sipIco"></i><span id="sipTyped"></span><span class="caret"></span></span></h1>
+      <p>Coffee, chai, cakes, soup and ice cream — brewed fresh and delivered free. Slow afternoons start here.</p>
+      <div class="sip-cta"><a class="btn2 btn2-main" href="#menu" data-burst><i class="fas fa-mug-hot"></i> Order Now</a><a class="btn2 btn2-ghost" href="#board"><i class="fas fa-star"></i> Barista Picks</a></div>
+      <div class="sip-facts"><span><i class="fas fa-motorcycle"></i> Free Delivery</span><span><i class="fas fa-clock"></i> 1 PM – 2 AM</span><span><i class="fab fa-whatsapp"></i> WhatsApp Checkout</span></div>
+    </div>
+    <div class="sh-vis">
+      <div class="cup-glow"></div>
+      <img class="sh-card c1" src="images/gallery/hot-coffee.jpg" alt="Hot coffee" data-pop="images/gallery/hot-coffee.jpg" data-title="Hot Coffee" data-desc="Freshly brewed, served steaming." data-kick="Urban Sip" data-href="#menu" data-wa="923102306333" data-group="hero">
+      <img class="sh-card c2" src="images/gallery/good-morning.jpg" alt="Good morning" data-pop="images/gallery/good-morning.jpg" data-title="Good Morning" data-desc="Coffee first, everything else later." data-kick="Urban Sip" data-href="#menu" data-wa="923102306333" data-group="hero">
+      <img class="sh-card c3" src="images/gallery/cupcake.jpg" alt="Cupcake" data-pop="images/gallery/cupcake.jpg" data-title="Cupcake" data-desc="Sprinkles and pure joy." data-kick="Urban Sip" data-href="#menu" data-wa="923102306333" data-group="hero">
+      <span class="steam s1"></span><span class="steam s2"></span><span class="steam s3"></span>
+    </div>
+  </div>
+</section>
+
+<!-- REELS -->
+<section class="sip-reels"><div class="container"><div class="sec-head reveal"><div class="eyebrow"><i class="fas fa-camera-retro"></i> Café Moments</div><h2>Fresh From <span>The Bar</span></h2><p>Tap any poster for a closer look.</p></div></div><div class="reel"><div class="reel-track"><div class="reel-item" data-pop="images/gallery/hot-coffee.jpg" data-title="Hot Coffee" data-desc="Freshly brewed, served steaming." data-group="sip1" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/hot-coffee.jpg" alt="Hot Coffee" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/good-morning.jpg" data-title="Good Morning" data-desc="Coffee first, everything else later." data-group="sip1" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/good-morning.jpg" alt="Good Morning" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/donut-coffee.jpg" data-title="Donut and Coffee" data-desc="A sweet morning pair." data-group="sip1" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/donut-coffee.jpg" alt="Donut and Coffee" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/cupcake.jpg" data-title="Cupcake" data-desc="Sprinkles, chocolate and joy." data-group="sip1" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/cupcake.jpg" alt="Cupcake" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/morning-flavor.jpg" data-title="Start Your Morning" data-desc="Latte, Mocha Latte and Flavoured Coffee." data-group="sip1" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/morning-flavor.jpg" alt="Start Your Morning" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/which-fancy.jpg" data-title="Which One Do You Fancy?" data-desc="Espresso, Cappuccino or Americano." data-group="sip1" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/which-fancy.jpg" alt="Which One Do You Fancy?" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/free-delivery-cup.jpg" data-title="Free Delivery" data-desc="Coffee to your door." data-group="sip1" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/free-delivery-cup.jpg" alt="Free Delivery" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/karak-chai.jpg" data-title="Karak Chai" data-desc="Kulhad chai, brewed strong." data-group="sip1" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/karak-chai.jpg" alt="Karak Chai" loading="lazy"></div></div></div><div class="reel rev"><div class="reel-track"><div class="reel-item" data-pop="images/gallery/americano.jpg" data-title="Americano" data-desc="Bold, smooth and black." data-group="sip2" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/americano.jpg" alt="Americano" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/espresso.jpg" data-title="Espresso" data-desc="Short, strong and stunning." data-group="sip2" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/espresso.jpg" alt="Espresso" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/soup.jpg" data-title="Chicken Corn Soup" data-desc="Warm and comforting." data-group="sip2" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/soup.jpg" alt="Chicken Corn Soup" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/karak-chai.jpg" data-title="Karak Chai" data-desc="The best chai in town." data-group="sip2" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/karak-chai.jpg" alt="Karak Chai" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/cupcake.jpg" data-title="Cupcake" data-desc="A little slice of happiness." data-group="sip2" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/cupcake.jpg" alt="Cupcake" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/donut-coffee.jpg" data-title="Donut and Coffee" data-desc="Latte art meets sprinkles." data-group="sip2" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/donut-coffee.jpg" alt="Donut and Coffee" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/hot-coffee.jpg" data-title="Hot Coffee" data-desc="Pour-over perfection." data-group="sip2" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/hot-coffee.jpg" alt="Hot Coffee" loading="lazy"></div><div class="reel-item" data-pop="images/gallery/good-morning.jpg" data-title="Good Morning" data-desc="Start slow, sip well." data-group="sip2" data-kick="Urban Sip" data-href="#menu" data-wa="923102306333"><img src="images/gallery/good-morning.jpg" alt="Good Morning" loading="lazy"></div></div></div></section>
+
+<!-- BARISTA BOARD -->
+<section class="board" id="board"><div class="container"><div class="sec-head reveal"><div class="eyebrow"><i class="fas fa-star"></i> Barista Picks</div><h2>Today&rsquo;s <span>Brew Board</span></h2><p>Tap a card to peek, or order straight on WhatsApp.</p></div>
+<div class="brew-grid"><div class="brew tilt reveal-zoom" data-delay="0"><div class="brew-img" data-pop="images/gallery/espresso.jpg" data-title="Espresso" data-desc="Short & strong. Order on WhatsApp and we will deliver it fresh." data-kick="Urban Sip" data-href="#menu" data-wa="923102306333" data-group="board"><img src="images/gallery/espresso.jpg" alt="Espresso" loading="lazy"><span class="brew-ico"><i class="fas fa-mug-saucer"></i></span></div><div class="brew-info"><h4>Espresso</h4><p>Short & strong</p><a class="brew-btn" target="_blank" href="https://wa.me/923102306333?text=Hi!%20I%27d%20like%20to%20order%20Espresso."><i class="fab fa-whatsapp"></i> Order</a></div></div><div class="brew tilt reveal-zoom" data-delay="60"><div class="brew-img" data-pop="images/gallery/americano.jpg" data-title="Americano" data-desc="Bold & smooth. Order on WhatsApp and we will deliver it fresh." data-kick="Urban Sip" data-href="#menu" data-wa="923102306333" data-group="board"><img src="images/gallery/americano.jpg" alt="Americano" loading="lazy"><span class="brew-ico"><i class="fas fa-mug-hot"></i></span></div><div class="brew-info"><h4>Americano</h4><p>Bold & smooth</p><a class="brew-btn" target="_blank" href="https://wa.me/923102306333?text=Hi!%20I%27d%20like%20to%20order%20Americano."><i class="fab fa-whatsapp"></i> Order</a></div></div><div class="brew tilt reveal-zoom" data-delay="120"><div class="brew-img" data-pop="images/gallery/morning-flavor.jpg" data-title="Latte & Mocha" data-desc="Milky & creamy. Order on WhatsApp and we will deliver it fresh." data-kick="Urban Sip" data-href="#menu" data-wa="923102306333" data-group="board"><img src="images/gallery/morning-flavor.jpg" alt="Latte & Mocha" loading="lazy"><span class="brew-ico"><i class="fas fa-mug-hot"></i></span></div><div class="brew-info"><h4>Latte & Mocha</h4><p>Milky & creamy</p><a class="brew-btn" target="_blank" href="https://wa.me/923102306333?text=Hi!%20I%27d%20like%20to%20order%20Latte%20and%20Mocha."><i class="fab fa-whatsapp"></i> Order</a></div></div><div class="brew tilt reveal-zoom" data-delay="180"><div class="brew-img" data-pop="images/gallery/which-fancy.jpg" data-title="Cappuccino" data-desc="Foamy classic. Order on WhatsApp and we will deliver it fresh." data-kick="Urban Sip" data-href="#menu" data-wa="923102306333" data-group="board"><img src="images/gallery/which-fancy.jpg" alt="Cappuccino" loading="lazy"><span class="brew-ico"><i class="fas fa-mug-saucer"></i></span></div><div class="brew-info"><h4>Cappuccino</h4><p>Foamy classic</p><a class="brew-btn" target="_blank" href="https://wa.me/923102306333?text=Hi!%20I%27d%20like%20to%20order%20Cappuccino."><i class="fab fa-whatsapp"></i> Order</a></div></div><div class="brew tilt reveal-zoom" data-delay="240"><div class="brew-img" data-pop="images/gallery/karak-chai.jpg" data-title="Karak Chai" data-desc="Kulhad style. Order on WhatsApp and we will deliver it fresh." data-kick="Urban Sip" data-href="#menu" data-wa="923102306333" data-group="board"><img src="images/gallery/karak-chai.jpg" alt="Karak Chai" loading="lazy"><span class="brew-ico"><i class="fas fa-mug-hot"></i></span></div><div class="brew-info"><h4>Karak Chai</h4><p>Kulhad style</p><a class="brew-btn" target="_blank" href="https://wa.me/923102306333?text=Hi!%20I%27d%20like%20to%20order%20Karak%20Chai."><i class="fab fa-whatsapp"></i> Order</a></div></div><div class="brew tilt reveal-zoom" data-delay="300"><div class="brew-img" data-pop="images/gallery/soup.jpg" data-title="Corn Soup" data-desc="Warm & hearty. Order on WhatsApp and we will deliver it fresh." data-kick="Urban Sip" data-href="#menu" data-wa="923102306333" data-group="board"><img src="images/gallery/soup.jpg" alt="Corn Soup" loading="lazy"><span class="brew-ico"><i class="fas fa-bowl-food"></i></span></div><div class="brew-info"><h4>Corn Soup</h4><p>Warm & hearty</p><a class="brew-btn" target="_blank" href="https://wa.me/923102306333?text=Hi!%20I%27d%20like%20to%20order%20Corn%20Soup."><i class="fab fa-whatsapp"></i> Order</a></div></div><div class="brew tilt reveal-zoom" data-delay="360"><div class="brew-img" data-pop="images/gallery/cupcake.jpg" data-title="Cupcake" data-desc="Sweet treat. Order on WhatsApp and we will deliver it fresh." data-kick="Urban Sip" data-href="#menu" data-wa="923102306333" data-group="board"><img src="images/gallery/cupcake.jpg" alt="Cupcake" loading="lazy"><span class="brew-ico"><i class="fas fa-cake-candles"></i></span></div><div class="brew-info"><h4>Cupcake</h4><p>Sweet treat</p><a class="brew-btn" target="_blank" href="https://wa.me/923102306333?text=Hi!%20I%27d%20like%20to%20order%20Cupcake."><i class="fab fa-whatsapp"></i> Order</a></div></div><div class="brew tilt reveal-zoom" data-delay="420"><div class="brew-img" data-pop="images/gallery/donut-coffee.jpg" data-title="Donut Combo" data-desc="Sip & bite. Order on WhatsApp and we will deliver it fresh." data-kick="Urban Sip" data-href="#menu" data-wa="923102306333" data-group="board"><img src="images/gallery/donut-coffee.jpg" alt="Donut Combo" loading="lazy"><span class="brew-ico"><i class="fas fa-cookie-bite"></i></span></div><div class="brew-info"><h4>Donut Combo</h4><p>Sip & bite</p><a class="brew-btn" target="_blank" href="https://wa.me/923102306333?text=Hi!%20I%27d%20like%20to%20order%20Donut%20Combo."><i class="fab fa-whatsapp"></i> Order</a></div></div></div></div></section>
+
+<!-- FEATURED NEW ARRIVALS -->
+<section class="featured">
+  <div class="container">
+    <div class="featured-grid">
+      <div class="featured-card"><span class="featured-tag"><i class="fas fa-wand-magic-sparkles"></i> New</span><img src="images/poster-parline.png" alt="Brand New Parline Ice Cream">
+        <div class="featured-cta"><a href="https://wa.me/923102306333?text=Hi!%20Is%20the%20Parline%20ice%20cream%20available%3F" target="_blank"><i class="fab fa-whatsapp"></i> Ask About This</a></div>
+      </div>
+      <div class="featured-card"><span class="featured-tag"><i class="fas fa-fire"></i> Fan Favourite</span><img src="images/poster-oreo-shake.png" alt="Oreo Milkshake">
+        <div class="featured-cta"><a href="https://wa.me/923102306333?text=Hi!%20I%27d%20like%20to%20order%20an%20Oreo%20Milkshake." target="_blank"><i class="fab fa-whatsapp"></i> Order This</a></div>
+      </div>
+      <div class="featured-card"><span class="featured-tag"><i class="fas fa-mug-hot"></i> Signature</span><img src="images/poster-karak-chai.png" alt="Karak Chai">
+        <div class="featured-cta"><a href="https://wa.me/923102306333?text=Hi!%20Is%20Karak%20Chai%20available%3F" target="_blank"><i class="fab fa-whatsapp"></i> Ask About This</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOATING CART -->
+<button class="cart-floating-btn" onclick="toggleCart()" aria-label="Open cart">
+  <i class="fas fa-shopping-bag"></i>
+</button>
+
+<!-- CART SIDEBAR -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h2>
+      <span><i class="fas fa-shopping-bag"></i> Your Cart</span>
+      <button class="close-cart" onclick="toggleCart()">&times;</button>
+    </h2>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <i class="fas fa-shopping-bag"></i>
+      <p>Your cart is empty</p>
+      <p style="font-size: 1rem;">Add some sweet treats!</p>
+    </div>
+  </div>
+  <div class="cart-summary" id="cartSummary" style="display: none;">
+    <div class="summary-row"><span>Subtotal:</span><span id="subtotal">Rs. 0</span></div>
+    <div class="summary-row summary-total"><span>Total:</span><span id="total">Rs. 0</span></div>
+    <button class="checkout-btn" onclick="openCheckout()"><i class="fab fa-whatsapp"></i> Checkout via WhatsApp</button>
+    <button class="clear-cart-btn" onclick="clearCart()"><i class="fas fa-trash"></i> Clear Cart</button>
+  </div>
+</div>
+
+<!-- MENU CONTAINER -->
+<div class="menu-container">
+  <div class="section-head" style="text-align:center;margin-bottom:1.6rem;">
+    <div class="eyebrow" id="menu"><i class="fas fa-utensils"></i> Sweet Delights Menu</div>
+  </div>
+
+  <div class="search-container">
+    <input type="text" class="search-box" id="searchBox" placeholder="Search cakes, pastries, ice cream..." oninput="searchMenu()">
+    <i class="fas fa-search search-icon"></i>
+  </div>
+
+  <div class="category-tabs">
+    <button class="tab-btn active" onclick="filterCategory('all')"><i class="fas fa-border-all"></i> All Items</button>
+    <button class="tab-btn" onclick="filterCategory('cakes')"><i class="fas fa-cake-candles"></i> Cakes</button>
+    <button class="tab-btn" onclick="filterCategory('pastries')"><i class="fas fa-cookie-bite"></i> Pastries</button>
+    <button class="tab-btn" onclick="filterCategory('icecream')"><i class="fas fa-ice-cream"></i> Ice Cream</button>
+    <button class="tab-btn" onclick="filterCategory('beverages')"><i class="fas fa-mug-hot"></i> Beverages</button>
+  </div>
+
+  <div id="menuContent"></div>
+</div>
+
+<!-- SIZE MODAL -->
+<div class="size-modal" id="sizeModal">
+  <div class="size-modal-content">
+    <h3><i class="fas fa-expand-alt"></i> Select Size</h3>
+    <div class="size-options" id="sizeOptions"></div>
+    <button class="confirm-size-btn" id="confirmSizeBtn" onclick="confirmSize()" disabled>
+      <i class="fas fa-check-circle"></i> Add to Cart
+    </button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand"><img src="images/logo.png" alt="Urban Sip"><span>Urban Sip</span></div>
+        <p>The dessert & café menu by Urban Crust — cakes, pastries, ice cream and coffee, Alpha Arcade E-16/3.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Urban Crust Home</a></li>
+          <li><a href="urban-menu.html">Food Menu</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Alpha Arcade, E-16/3, Near Masjid Ibrahim, Islamabad</p>
+        <p style="margin-top:.6rem;"><i class="fas fa-clock"></i> Daily 1 PM – 2 AM</p>
+        <p style="margin-top:.6rem;"><i class="fas fa-phone"></i> <a href="tel:+923102306333" style="color:var(--muted);">0310 2306333</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 <strong>Urban Sip</strong> — by Urban Crust</p></div>
+  </div>
+</footer>
+
+<script src="js/brand.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/sip.js"></script>
+
+<!-- ORDERING LOGIC (unchanged functionality) -->
+    <script>
+        const phoneNumber = "+923102306333";
+        let cart = [];
+        let currentItem = null;
+        let selectedSize = null;
+        let currentCategory = 'all';
+        let searchQuery = '';
+        
+        const menuData = {
+            cakes: [
+                {name: "Donut", price: 180, desc: "Soft & fluffy donuts", image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400"},
+                {name: "Cupcake", price: 180, desc: "Delicious cupcakes", image: "https://images.unsplash.com/photo-1587668178277-295251f900ce?w=400"},
+                {name: "Brownie", price: 280, desc: "Rich chocolate brownie", image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400", special: true},
+                {name: "Red Velvet", price: 2900, desc: "Premium red velvet cake - 2.5 pound", image: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=400", special: true},
+                {name: "Lotus Cake", price: 3000, desc: "Lotus biscoff delight - 2.5 pound", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400", special: true},
+                {name: "Cream Cake", price: 1200, desc: "Fresh cream cake - 1 pound", image: "https://images.unsplash.com/photo-1464349153735-7db50ed83c84?w=400"},
+                {name: "Black Forest", price: 2800, desc: "Classic black forest - 2.5 pound", image: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=400"},
+                {name: "Chocolate Fudge", price: 2500, desc: "Rich chocolate fudge - 2 pound", image: "https://images.unsplash.com/photo-1578775887804-699de7086ff9?w=400"},
+                {name: "Strawberry Cake", price: 2700, desc: "Fresh strawberry cake - 2.5 pound", image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400"}
+            ],
+            pastries: [
+                {name: "Chocolate Éclair", price: 250, desc: "French chocolate éclair", image: "https://images.unsplash.com/photo-1603532648955-039310d9ed75?w=400"},
+                {name: "Croissant", price: 200, desc: "Buttery flaky croissant", image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400"},
+                {name: "Danish Pastry", price: 280, desc: "Sweet danish pastry", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400"},
+                {name: "Fruit Tart", price: 320, desc: "Fresh fruit tart", image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400", special: true},
+                {name: "Chocolate Roll", price: 220, desc: "Swiss chocolate roll", image: "https://images.unsplash.com/photo-1607920591413-4ec007e70023?w=400"},
+                {name: "Macaron Box", price: 800, desc: "Assorted macarons (6pc)", image: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=400", special: true}
+            ],
+            icecream: [
+                {name: "Chocolate", sizes: [{name: "Single", price: 200}, {name: "Double", price: 350}], desc: "Rich chocolate ice cream", image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400"},
+                {name: "Kulfa", sizes: [{name: "Single", price: 200}, {name: "Double", price: 350}], desc: "Traditional kulfa", image: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400", special: true},
+                {name: "Mango", sizes: [{name: "Single", price: 200}, {name: "Double", price: 350}], desc: "Fresh mango ice cream", image: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400"},
+                {name: "Strawberry", sizes: [{name: "Single", price: 200}, {name: "Double", price: 350}], desc: "Sweet strawberry ice cream", image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400"},
+                {name: "Vanilla", sizes: [{name: "Single", price: 200}, {name: "Double", price: 350}], desc: "Classic vanilla ice cream", image: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=400"}
+            ],
+            beverages: [
+                {name: "Cappuccino", price: 550, desc: "Classic cappuccino", image: "https://images.unsplash.com/photo-1534778101976-62847782c213?w=400"},
+                {name: "Latte", price: 600, desc: "Smooth café latte", image: "https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=400"},
+                {name: "Mocha Latte", price: 600, desc: "Chocolate mocha latte", image: "https://images.unsplash.com/photo-1599639957043-f3aa5c986398?w=400"},
+                {name: "Ice Latte", price: 450, desc: "Cold ice latte", image: "https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=400"},
+                {name: "Chocolate Shake", price: 550, desc: "Creamy chocolate shake", image: "images/poster-oreo-shake.png", special: true},
+                {name: "Strawberry Shake", price: 600, desc: "Fresh strawberry shake", image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=400"},
+                {name: "Mango Shake", price: 550, desc: "Tropical mango shake", image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400"},
+                {name: "Peach Tea", price: 690, desc: "Refreshing peach tea", image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400"},
+                {name: "Lemon Tea", price: 600, desc: "Fresh lemon tea", image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400"},
+                {name: "Love Me Mojito", price: 500, desc: "Signature mojito", image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400", special: true},
+                {name: "Hot Chocolate", price: 500, desc: "Rich hot chocolate", image: "https://images.unsplash.com/photo-1542990253-a781e04c0082?w=400"},
+                {name: "Green Tea", price: 100, desc: "Healthy green tea", image: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=400"}
+            ]
+        };
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            sidebar.classList.toggle('show');
+            
+            if (sidebar.classList.contains('show')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function updateCartBadge() {
+            const badge = document.getElementById('cartBadge');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (totalItems > 0) {
+                badge.textContent = totalItems;
+                badge.style.display = 'flex';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartSummary = document.getElementById('cartSummary');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-bag"></i>
+                        <p>Your cart is empty</p>
+                        <p style="font-size: 1rem;">Add some sweet treats!</p>
+                    </div>
+                `;
+                cartSummary.style.display = 'none';
+                return;
+            }
+
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-header">
+                        <div>
+                            <div class="cart-item-name">${item.name}</div>
+                            ${item.size ? `<div class="cart-item-size">${item.size}</div>` : ''}
+                        </div>
+                        <div class="cart-item-price">Rs. ${itemTotal}</div>
+                    </div>
+                    <div class="cart-item-controls">
+                        <div class="quantity-controls">
+                            <button class="qty-btn" onclick="updateQuantity(${index}, -1)">−</button>
+                            <span class="qty-display">${item.quantity}</span>
+                            <button class="qty-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${index})">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+
+            document.getElementById('subtotal').textContent = `Rs. ${total}`;
+            document.getElementById('total').textContent = `Rs. ${total}`;
+            cartSummary.style.display = 'block';
+            updateCartBadge();
+        }
+
+        function addToCart(item, size = null) {
+            const price = size ? size.price : item.price;
+            const sizeName = size ? size.name : null;
+            
+            const existingIndex = cart.findIndex(cartItem => 
+                cartItem.name === item.name && cartItem.size === sizeName
+            );
+
+            if (existingIndex !== -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({
+                    name: item.name,
+                    price: price,
+                    size: sizeName,
+                    quantity: 1
+                });
+            }
+
+            updateCartDisplay();
+            
+            const badge = document.getElementById('cartBadge');
+            badge.style.animation = 'none';
+            setTimeout(() => {
+                badge.style.animation = 'badgeBounce 0.6s';
+            }, 10);
+        }
+
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartDisplay();
+        }
+
+        function removeFromCart(index) {
+            if (confirm('Remove this item from cart?')) {
+                cart.splice(index, 1);
+                updateCartDisplay();
+            }
+        }
+
+        function clearCart() {
+            if (confirm('Clear all items from cart?')) {
+                cart = [];
+                updateCartDisplay();
+            }
+        }
+
+        function openAddToCart(item) {
+            if (item.sizes && item.sizes.length > 0) {
+                currentItem = item;
+                selectedSize = null;
+                
+                const sizeOptions = document.getElementById('sizeOptions');
+                sizeOptions.innerHTML = '';
+                
+                item.sizes.forEach(size => {
+                    const sizeOption = document.createElement('div');
+                    sizeOption.className = 'size-option';
+                    sizeOption.innerHTML = `
+                        <span class="size-option-name">${size.name}</span>
+                        <span class="size-option-price">Rs. ${size.price}</span>
+                    `;
+                    sizeOption.onclick = () => selectSizeOption(size, sizeOption);
+                    sizeOptions.appendChild(sizeOption);
+                });
+                
+                document.getElementById('confirmSizeBtn').disabled = true;
+                document.getElementById('sizeModal').classList.add('show');
+            } else {
+                addToCart(item);
+                showToast('Added to cart!');
+            }
+        }
+
+        function selectSizeOption(size, element) {
+            document.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedSize = size;
+            document.getElementById('confirmSizeBtn').disabled = false;
+        }
+
+        function confirmSize() {
+            if (selectedSize && currentItem) {
+                addToCart(currentItem, selectedSize);
+                document.getElementById('sizeModal').classList.remove('show');
+                showToast('Added to cart!');
+            }
+        }
+
+        function showToast(message) {
+            const existingToast = document.querySelector('.toast-message');
+            if (existingToast) {
+                existingToast.remove();
+            }
+
+            const toast = document.createElement('div');
+            toast.className = 'toast-message';
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, #25D366, #128C7E);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 30px;
+                font-weight: bold;
+                z-index: 10003;
+                box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+                animation: slideUp 0.5s ease;
+            `;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideDown 0.5s ease';
+                setTimeout(() => toast.remove(), 500);
+            }, 2000);
+        }
+
+        function openCheckout() {
+            if (cart.length === 0) {
+                showToast('Your cart is empty!');
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            let message = `🧁 *URBAN SIP ORDER*\n\n`;
+            message += `🛒 *ORDER DETAILS (${totalItems} items):*\n`;
+            message += `───────────────\n`;
+            
+            cart.forEach((item, index) => {
+                message += `${index + 1}. ${item.name}`;
+                if (item.size) message += ` (${item.size})`;
+                message += `\n   Qty: ${item.quantity} × Rs. ${item.price} = Rs. ${item.price * item.quantity}\n\n`;
+            });
+            
+            message += `───────────────\n`;
+            message += `💰 *TOTAL: Rs. ${total}*\n\n`;
+            message += `📍 Urban Sip - Premium Bakery\nAlpha Arcade E-16/3, Islamabad\n☎️ 0310 230 6333`;
+
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            showToast('Opening WhatsApp...');
+            
+            setTimeout(() => {
+                cart = [];
+                updateCartDisplay();
+                toggleCart();
+            }, 1000);
+        }
+
+        function searchMenu() {
+            searchQuery = document.getElementById('searchBox').value.toLowerCase();
+            renderMenu(currentCategory);
+        }
+
+        function renderMenu(category = 'all') {
+            currentCategory = category;
+            const container = document.getElementById('menuContent');
+            container.innerHTML = '';
+
+            const categories = category === 'all' ? Object.keys(menuData) : [category];
+            let foundItems = false;
+
+            categories.forEach(cat => {
+                let filteredItems = menuData[cat];
+                
+                if (searchQuery) {
+                    filteredItems = filteredItems.filter(item => 
+                        item.name.toLowerCase().includes(searchQuery) ||
+                        item.desc.toLowerCase().includes(searchQuery)
+                    );
+                }
+
+                if (filteredItems.length === 0) return;
+
+                foundItems = true;
+                const section = document.createElement('div');
+                section.className = 'menu-section';
+                section.id = cat;
+                section.dataset.category = cat;
+
+                const categoryEmojis = {
+                    cakes: '<i class="fas fa-cake-candles"></i>',
+                    pastries: '<i class="fas fa-cookie-bite"></i>',
+                    icecream: '<i class="fas fa-ice-cream"></i>',
+                    beverages: '<i class="fas fa-mug-hot"></i>'
+                };
+
+                section.innerHTML = `<h2>${categoryEmojis[cat]} ${cat.charAt(0).toUpperCase() + cat.slice(1)}</h2>`;
+
+                const grid = document.createElement('div');
+                grid.className = 'menu-grid';
+
+                filteredItems.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'menu-item';
+                    
+                    let priceDisplay = '';
+                    if (item.sizes) {
+                        const prices = item.sizes.map(s => s.price);
+                        priceDisplay = prices.length > 1 ? `Rs. ${Math.min(...prices)} - ${Math.max(...prices)}` : `Rs. ${prices[0]}`;
+                    } else {
+                        priceDisplay = `Rs. ${item.price}`;
+                    }
+
+                    const itemJson = JSON.stringify(item).replace(/'/g, "&apos;").replace(/"/g, "&quot;");
+
+                    card.innerHTML = `
+                        ${item.special ? '<span class="special-badge">SPECIAL!</span>' : ''}
+                        <img src="${item.image}" alt="${item.name}" class="item-image" onerror="this.src='https://via.placeholder.com/400x300/FFB6D9/FFFFFF?text=${encodeURIComponent(item.name)}'">
+                        <div class="item-header">
+                            <div class="item-name">${item.name}</div>
+                            <div class="item-price">${priceDisplay}</div>
+                        </div>
+                        <div class="item-desc">${item.desc}</div>
+                        ${item.sizes ? `<div class="item-sizes">Available: ${item.sizes.map(s => s.name).join(', ')}</div>` : ''}
+                        <button class="add-to-cart-btn" onclick='openAddToCart(${itemJson})'>
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    `;
+                    grid.appendChild(card);
+                });
+
+                section.appendChild(grid);
+                container.appendChild(section);
+            });
+
+            if (!foundItems) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <p>No items found</p>
+                        <p style="font-size: 1rem; margin-top: 0.5rem;">Try different keywords</p>
+                    </div>
+                `;
+            }
+        }
+
+        function filterCategory(cat) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('searchBox').value = '';
+            searchQuery = '';
+            renderMenu(cat);
+        }
+
+        document.getElementById('sizeModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('show');
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('sizeModal').classList.remove('show');
+                const sidebar = document.getElementById('cartSidebar');
+                if (sidebar.classList.contains('show')) {
+                    toggleCart();
+                }
+            }
+        });
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideUp {
+                from { bottom: -100px; opacity: 0; }
+                to { bottom: 100px; opacity: 1; }
+            }
+            @keyframes slideDown {
+                from { bottom: 100px; opacity: 1; }
+                to { bottom: -100px; opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        renderMenu('all');
+        updateCartDisplay();
+    </script>
+</body>
+</html>
